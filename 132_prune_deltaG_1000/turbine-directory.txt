@@ -1,0 +1,1 @@
+/home/danielreid/swift-auxetic/runs/132_prune_deltaG_1000/out
