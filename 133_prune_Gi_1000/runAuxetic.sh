@@ -1,11 +1,3 @@
-#!/bin/bash
-#SBATCH --job-name=delG1k
-#SBATCH --output=job0.out
-#SBATCH --partition=boltzmann
-#SBATCH --nodes=15
-#SBATCH --exclusive
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=danielreid@uchicago.edu
 
 set -e
 
@@ -21,10 +13,10 @@ export TURBINE_OUTPUT=$PWD/out
 export PATH=$PATH:/home/wozniak/Public/sfw/compute/gcc/swift-t-mpich-py/stc/bin:/home/wozniak/Public/sfw/compute/gcc/swift-t-mpich-py/turbine/bin:/home/danielreid/swift-auxetic/core/build/python/build/lib.linux-x86_64-2.7
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/danielreid/swift-auxetic/core/build
 export PPN=12
-export WALLTIME=30-00:00:00
-export QUEUE=boltzmann
+export WALLTIME=7-00:00:00
+export QUEUE=gibbs
 export PROJECT=pi-depablo
-export TURBINE_JOBNAME=hello
+export TURBINE_JOBNAME=trimGi
 #export TURBINE_SBATCH_ARGS="--time=10:00"
 module load java
 module load mvapich2
@@ -33,6 +25,6 @@ module load mvapich2
 #module load intel/15.0
 module load boost/1.55+python-2.7-2014q1
 which swift-t
-nice swift-t  -n 216 -m slurm -p $THIS/tryAuxetic.c
+nice swift-t  -n 360 -m slurm -p $THIS/tryAuxetic.c
 #swift-t -n 2 -p $THIS/tryAuxetic.c  
 #python drivers.py
