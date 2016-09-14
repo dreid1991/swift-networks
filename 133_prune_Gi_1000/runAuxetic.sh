@@ -2,14 +2,14 @@
 set -e
 
 THIS=$( dirname $0 )
-if [ -e out ] 
+if [ -e out_restart ] 
 then
-	rm -r $PWD/out
+	rm -r $PWD/out_restart
 fi
 export PYTHONPATH=$PWD
 #turns off output from run setup, joining
 export TURBINE_LOG=0 
-export TURBINE_OUTPUT=$PWD/out
+export TURBINE_OUTPUT=$PWD/out_restart
 export PATH=$PATH:/home/wozniak/Public/sfw/compute/gcc/swift-t-mpich-py/stc/bin:/home/wozniak/Public/sfw/compute/gcc/swift-t-mpich-py/turbine/bin:/home/danielreid/swift-auxetic/core/build/python/build/lib.linux-x86_64-2.7
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/danielreid/swift-auxetic/core/build
 export PPN=12

@@ -18,7 +18,7 @@ def countBonds(srcFile):
     return repr(len(state.bonds))
 
 
-def setupInitState(srcFile):
+def setupInitState(srcFile, cutsFn):
     if not 'Networks' in globals():
         importSim()
     if 'state' in globals():
@@ -234,6 +234,9 @@ def setupInitState(srcFile):
     state.verbose = False
     globals()['state'] = state
     globals()['poisson'] = poisson
+
+    if cutsFn != None:
+        cutBondIdxsFromFile(cutsFn)
     return repr(None)
 
 def measureStress(bondIdx, setupDone, prevCutDone):
@@ -275,7 +278,8 @@ def countBendingBonds(setupDone, prevCutDone):
     return repr(len(state.bendingBonds))
 
 def pickIdxToCut(xs):
-    xs = eval(xs)
+    if isinstance(xs, str):
+        xs = eval(xs)
     minIdx = 0
     minVal = min(xs)
     idx = xs.index(minVal)
@@ -287,7 +291,6 @@ def cutBond(idxToRemove, writesFinished):
         removed = Networks.Mod.deleteAtomsWithBondThreshold(state, groupHandle='orig', polarity=-1, thresh=1)
         if not len(removed):
             break
-        dataFile.write('Remove atom ids %s' % (' '.join(str(x) for x in removed)))
 
     while Networks.Mod.deleteAtomsWithBondThreshold(state, groupHandle='all', polarity=-1, thresh=0): #this gets rid of extra director atoms
         pass
@@ -323,3 +326,17 @@ def writeInfo(fn, vals):
     f.write(v + '\n')
     f.close()
     return repr(None)
+
+
+
+#for re-loading state
+def cutBondIdxsFromFile(fn):
+    f = open(fn)
+    lines = f.readlines()
+    for l in lines:
+        idxToCut = int(l)
+        cutBond(idxToCut, True)
+    f.close()
+    return repr(None)
+
+
