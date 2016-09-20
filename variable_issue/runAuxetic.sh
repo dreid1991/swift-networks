@@ -3,8 +3,10 @@
 set -e
 
 THIS=$( dirname $0 )
-export PYTHONPATH=$THIS
+export PYTHONPATH=$( cd $THIS/.. ; /bin/pwd )
 #turns off output from run setup, joining
-export TURBINE_LOG=0 
+export TURBINE_LOG=0
 
-swift-t -n 5 -p $THIS/tryAuxetic.c
+N=${1:-5}
+set -x
+swift-t -n $N -p $THIS/tryAuxetic.c
