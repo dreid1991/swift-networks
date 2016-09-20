@@ -59,9 +59,9 @@ setupsDone[nWorkers+1] = python_persist("import drivers", "drivers.writeInfoHead
 loggedZs[-1] = float2string(targetZ + 1); //soooo we're always trimming at least one.  That's okay.  Or could play around with dependencies.
 string setupsDoneAll = join(setupsDone, ",");
 
-for (int nTrimmed=0; 
-     targetZ < string2float(loggedZs[nTrimmed-1]); 
-     nTrimmed=nTrimmed+1) {
+for (int nTrimmed=0, boolean b=true;
+     b;
+     nTrimmed=nTrimmed+1, b=c) {
 //foreach nTrimmed in [0:nToTrim-1] {
     string stresses[];
     string writesFinished[];
@@ -100,4 +100,7 @@ for (int nTrimmed=0;
 
 
     cutsDone[nTrimmed+1] = cutsJoin;
+
+    boolean c;
+    c = (targetZ < string2float(loggedZs[nTrimmed-1]));
 }
