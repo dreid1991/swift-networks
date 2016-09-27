@@ -1,3 +1,4 @@
+*.pyc
 132_prune_deltaG_1000/out
 133_prune_Gi_1000/out
 132_prune_deltaG_1000/out_restart
