@@ -1,0 +1,7 @@
+
+# For ZSH:
+source /srv/adm/modules/init/zsh
+
+# Use these modules:
+module load gcc/6.1
+module load boost/1.55+python-2.7-2014q1

@@ -2,8 +2,12 @@ import io;
 import python;
 import location;
 import string;
+import sys;
 string fileName = "/home/daniel/Documents/auxetic/runs/027_create_finite/starting_config_4_2_nParticles_300.xml";
 //string fileName = "/home/daniel/Documents/auxetic/runs/027_create_finite/starting_config_5.000000_nParticles_2000_aspect_1.000000.xml";
+
+printf("Swift LLD: %s", getenv("LD_LIBRARY_PATH"));
+printf("Swift PP:  %s", getenv("PYTHONPATH"));
 
 string cutsDone[];
 cutsDone[0] = "";
