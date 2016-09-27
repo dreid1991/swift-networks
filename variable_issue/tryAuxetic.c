@@ -18,7 +18,7 @@ drivers.countBonds(\"%s\")
 """ % fileName;
 
 string setupInitState = """
-drivers.setupInitState(\"%s\")
+drivers.setupInitState(\"%s\", None)
 """ % fileName;
 
 int nBondInit = string2int(python_persist(importSim, countBonds));
