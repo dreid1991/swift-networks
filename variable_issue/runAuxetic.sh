@@ -7,12 +7,15 @@
 
 set -eu
 
-GB_BUILD=$HOME/proj/gb/build
+GB_ROOT=$HOME/proj/gb
+GB_CODE=$GB_ROOT/code
+GB_BUILD=$GB_ROOT/build
 export LD_LIBRARY_PATH+=:$GB_BUILD
 
 THIS=$( dirname $0 )
 export PYTHONPATH=$( cd $THIS/.. ; /bin/pwd )
 PYTHONPATH+=:$GB_BUILD/python/build/lib.linux-x86_64-2.7
+PYTHONPATH+=:$GB_CODE
 
 #turns off output from run setup, joining
 export TURBINE_LOG=0
