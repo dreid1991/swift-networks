@@ -13,7 +13,9 @@ GB_BUILD=$GB_ROOT/build
 export LD_LIBRARY_PATH+=:$GB_BUILD
 
 THIS=$( dirname $0 )
-export PYTHONPATH=$( cd $THIS/.. ; /bin/pwd )
+export PYTHONPATH=
+PYTHONPATH+=$THIS
+PYTHONPATH+=:$( cd $THIS/.. ; /bin/pwd )
 PYTHONPATH+=:$GB_BUILD/python/build/lib.linux-x86_64-2.7
 PYTHONPATH+=:$GB_CODE
 
